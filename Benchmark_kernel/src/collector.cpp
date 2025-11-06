@@ -41,6 +41,8 @@ void collector(ap_uint<VECTOR_WIDTH>  *out,
                hls::stream<pkt>       &summary,
                ap_uint<40>            &received_packets) {
 
+#pragma HLS INTERFACE axis register both port=summary
+
   ap_uint<VECTOR_WIDTH>   local_mem[LOCAL_MEM_DEPTH];
   ap_uint<VECTOR_WIDTH>   vector_word;
   ap_uint< 32>            global_memory_offset = 0;
