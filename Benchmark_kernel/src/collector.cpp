@@ -41,7 +41,10 @@ void collector(ap_uint<VECTOR_WIDTH>  *out,
                hls::stream<pkt>       &summary,
                ap_uint<40>            &received_packets) {
 
-#pragma HLS INTERFACE axis register both port=summary
+#pragma HLS INTERFACE mode=axis port=summary depth=16
+#pragma HLS INTERFACE m_axi port=out depth = 16
+#pragma HLS INTERFACE mode=s_axilite port=out bundle=control
+#pragma HLS INTERFACE mode=s_axilite port=return bundle=control
 
   ap_uint<VECTOR_WIDTH>   local_mem[LOCAL_MEM_DEPTH];
   ap_uint<VECTOR_WIDTH>   vector_word;
