@@ -42,7 +42,7 @@ void collector(ap_uint<VECTOR_WIDTH>  *out,
                ap_uint<40>            &received_packets) {
 
 #pragma HLS INTERFACE mode=axis port=summary depth=16
-#pragma HLS INTERFACE m_axi port=out depth = 16
+#pragma HLS INTERFACE m_axi port=out bundle=gmem0 depth=16
 #pragma HLS INTERFACE mode=s_axilite port=out bundle=control
 #pragma HLS INTERFACE mode=s_axilite port=return bundle=control
 
